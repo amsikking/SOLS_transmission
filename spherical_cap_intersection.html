@@ -1,0 +1,94 @@
+<!-- comment -->
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>SOLS transmission: Spherical cap intersection</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/prism.css">
+    <script src="javascript/python-highlighting/prism.js"></script>
+    <script async src="javascript/Minimal-MathJax/MathJax.js?config=TeX-AMS_CHTML"></script>
+    <script src="javascript/update_figures.js"></script>
+    <script src="javascript/reference_list/reference_list.js"></script>
+</head>
+
+<body>
+<section>
+	<a href="https://amsikking.github.io/">Home page</a>
+	<h1>amsikking: SOLS transmission</h1>
+	<a href="./index.html">Index</a>
+
+	<h2>Spherical cap intersection</h2>
+	<h3>Numerical estimate</h3>
+	<p>
+	<a href="https://github.com/AndrewGYork">Andrew G. York</a> wrote a nice 
+	<a href="https://andrewgyork.github.io/high_na_single_objective_lightsheet/images/efficiency/spherical_cap_overlap.py">Python script</a>
+	to numerically estimate the intersection of spherical caps with visualization
+	, see it 
+	<a href="https://andrewgyork.github.io/high_na_single_objective_lightsheet/appendix.html#theoretical_performance">here</a>.
+	</p>
+	
+	<figure>
+    <img src="figures/spherical_cap_intersection_numerical.png" alt="spherical_cap_intersection_numerical.png">
+	<figcaption>
+	(Figure by Andrew G. York)
+	</figcaption>
+	</figure>
+	
+	<h3>Analytical solution</h3>
+	<p>
+	<a href="https://math.stackexchange.com/users/878079/dkr">DKR</a> posted a
+	<a href="https://math.stackexchange.com/questions/45788/calculate-the-area-on-a-sphere-of-the-intersection-of-two-spherical-caps%22">detailed discussion</a>
+	on the analytical solution to calculate the area on a sphere of the intersection
+	of two spherical caps \(A_n\) which is presented here:
+	
+	\[A_n = 2 r^2 (\pi - A\cos b - B \cos a - C) \tag{1}\]
+	
+	where:
+	
+	\[A = 2 \arctan \left ( \frac{k}{\sin(s - a)} \right ) \tag{2}\]
+	
+	\[B = 2 \arctan \left ( \frac{k}{\sin(s - b)} \right ) \tag{3}\]
+	
+	\[C = 2 \arctan \left ( \frac{k}{\sin(s - c)} \right ) \tag{4}\]
+	
+	\[k = \sqrt{\frac{\sin(s - a)\sin(s - b)\sin(s - c)}{\sin s}} \tag{5}\]
+	
+	\[s = \frac{1}{2}(a + b + c) \tag{6}\]
+	
+	and in the language of SOLS transmission \(a = \theta_2\) is the half 
+	angle of spherical cap 2, \(b = \theta_3\) is the half angle of spherical 
+	cap 3 and \(c = \theta_t\) is the tilt angle between the caps (\(r\) is
+	radius for absolute calculations).
+	</p>
+	<p>
+	The area of spherical cap 2 \(A_2\) is simply:
+	
+	\[A_2 = 2 \pi r^2 (1 - \cos a) \tag{7}\]
+	
+	and so the fraction of transmitted rays between caps 2 and 3 is:
+	
+	\[T_3 = \frac{A_n}{A_2} \tag{8}\]
+	
+	or explicitly:
+	
+	\[T_3 = \frac{(\pi - A\cos b - B \cos a - C)}{\pi (1 - \cos a)} \tag{9}\]
+	
+	</p>
+
+	<figure>
+    <img src="figures/spherical_cap_intersection_analytical.png" alt="spherical_cap_intersection_analytical.png">
+    <figcaption>
+	(Figure by DKR)
+	</figcaption>
+	</figure>
+
+	<h3>Comparison</h3>
+	The numerical solution typically converges to the analytical solution to
+	within 1% if at least 1 million random points are used. Run this
+	<a href="spherical_cap_intersection.py">Python script</a> to compare.
+
+</section>
+</body>
+</html>

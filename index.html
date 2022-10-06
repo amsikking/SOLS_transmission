@@ -1,0 +1,301 @@
+<!-- comment -->
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>amsikking: SOLS transmission</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/prism.css">
+    <script src="javascript/python-highlighting/prism.js"></script>
+    <script async src="javascript/Minimal-MathJax/MathJax.js?config=TeX-AMS_CHTML"></script>
+    <script src="javascript/update_figures.js"></script>
+    <script src="javascript/reference_list/reference_list.js"></script>
+</head>
+
+<body>
+<section>
+	<a href="https://amsikking.github.io/">Home page</a>
+	<h1>amsikking: SOLS  transmission</h1>
+	<a href="https://github.com/amsikking/SOLS_transmission">GitHub repository</a>
+
+	<h2>Description</h2>
+	<p>
+	In a single-objective light-sheet (SOLS) microscope there are more optics on 
+	the emission path compared to a regular microscope. So how does the 
+	<em>transmission</em> of a SOLS microscope compare to a standard microscope?
+	Or similar microscopes like OPM, eSPIM or Lattice?
+	</p>
+	<p> 
+	Here's a simple analytical estimate for the transmission of a SOLS (or similar)
+	microscope:
+	</p>
+	<ul>
+	<li>To quickly see the results for a particular setup simply edit and run this 
+	Python script:
+	<a href="SOLS_transmission.py">SOLS_transmission.py</a></li>
+	</ul>
+
+	<figure>
+    <img src="figures/SOLS_transmission_overview.png" alt="SOLS_transmission_overview.png">
+    <figcaption>
+	(<a href="figures/SOLS_transmission_sketches.odp">.odp sketch</a>)
+	</figcaption>
+	</figure>
+
+	<h2>Results</h2>
+	<p>
+	The original 
+	<a href="https://andrewgyork.github.io/high_na_single_objective_lightsheet/">
+	SOLS design from 2019</a> transmits about <strong>~50%</strong> of the light of 
+	the <em>equivalent widefield epifluorescence microscope</em> (the 'Benchmark'). 
+	The 'SOLS re-optimised' configuration with <strong>~65%</strong> transmission 
+	can be achieved by swapping out the original lens-galvo-lens scanner for a 
+	'lenses' scanner (like a pair of larger galvos), and 
+	<a href="https://amsikking.github.io/SOLS_optimum_tilt/">optimizing the tilt</a>
+	of microscope 3 from 30deg to 25deg. The larger scanning optics in this 
+	configuration are typically slower, but should still be faster than sample 
+	scanning (e.g. the Lattice).
+	</p>
+
+<table style="text-align:center">
+  <tr><th>Microscope</th>				<th>Type</th> 	  <th>hemispheric transmission</th>	<th>normalized transmission</th></tr>
+  <tr><td>Benchmark</td>				<td>Coverslip</td><td>54.23%</td>					<td>100.00%</td>				</tr>
+  <tr><td><a class="citation" href="https://doi.org/10.1038/nphoton.2014.323" 
+  title="Swept confocally-aligned planar excitation (SCAPE) microscopy for 
+  high-speed volumetric imaging of behaving organisms; 
+  M.B. Bouchard, V. Voleti, C.S. Mendes, C. Lacefield, W. B. Grueber, R.S. Mann, 
+  R.M. Bruno and E.M.C. Hillman; Nature Photonics, vol 9, p113-119, (2015)">
+  SCAPE, Bouchard 2015</a></td>			<td>Dipping</td>  <td>1.29%</td>					<td>2.38%</td>					</tr>
+  <tr><td><a class="citation" href="https://doi.org/10.1364/OE.26.013027" 
+  title="Integrated one- and two-photon scanned oblique plane illumination (SOPi) 
+  microscopy for rapid volumetric imaging; Manish Kumar, Sandeep Kishore, 
+  Jordan Nasenbeny, David McLean and Yevgenia Kozorovitskiy; arXiv, (2018)">
+  SOPi, Kumar 2018</a></td>				<td>Dipping</td>  <td>2.46%</td>					<td>4.54%</td>					</tr>
+  <tr><td><a class="citation" href="https://doi.org/10.1038/s41592-019-0579-4" 
+  title="Real-time volumetric microscopy of in vivo dynamics and large-scale 
+  samples with SCAPE 2.0; 
+  V. Voleti, K.B. Patel, W. Li, C.P. Campos, S. Bharadwaj, H. Yu, C. Ford, M.J. 
+  Casper, R.W. Yan, W. Liang, C. Wen, K.D. Kimura, K.L. Targoff and E.M.C. Hillman; 
+  Nature Methods, vol 16, p1054–1062, (2019)">
+  SCAPE, Voleti 2019</a></td>			<td>Dipping</td>  <td>5.54%</td>					<td>10.22%</td>					</tr>
+  <tr><td><a class="citation" href="https://doi.org/10.1101/2021.04.30.442190" 
+  title="Crossbill: an open access single objective light-sheet microscopy 
+  platform; 
+  M. Kumar, S. Kishore, D.L. McLean and Y. Kozorovitskiy; 
+  BioRxiv, (2021)">
+  Crossbill, Kumar 2021</a></td>		<td>Dipping</td>  <td>7.04%</td>					<td>12.99%</td>					</tr>
+  <tr><td><a class="citation" href="https://doi.org/10.1126/science.1257998" 
+  title="Lattice light-sheet microscopy: Imaging molecules to embryos at high 
+  spatiotemporal resolution;
+  B. Chen, W.R. Legant, K. Wang, L. Shao, D.E. Milkie, M.W. Davidson, 
+  C. Janetopoulos, X.S. Wu, J.A. Hammer, Z.L. Liu, B.P. English, Y. Mimori-Kiyosue,
+  D.P. Romero, A.T. Ritter, J. Lippincott-Schwartz, L. Fritz-Laylin, R.D. Mullins,
+  D.M. Mitchell, J.N. Bembenek, A.C. Reymann, R. Böhme, S.W. Grill, J.T. Wang, 
+  G. Seydoux, U.S. Tulu, D.P. Kiehart and E. Betzig;
+  Science, vol 364(6208), p1257998-1–1257998-12, (2014)">
+  Lattice, Chen 2014</a></td>			<td>Dipping</td>  <td>35.14%</td>					<td>64.79%</td>				 	</tr>    
+  <tr><td><a class="citation" href="https://doi.org/10.1364/OE.16.020306" 
+  title="Optically sectioned imaging by oblique plane microscopy; 
+  C. Dunsby; Optics Express, vol 16(25), p20306-20316, (2008)">
+  OPM, Dunsby 2008</a></td>				<td>Coverslip</td><td>2.58%</td>					<td>4.76%</td>					</tr>
+  <tr><td><a class="citation" href="https://doi.org/10.1364/OE.19.013839" 
+  title="High-speed 2D and 3D fluorescence microscopy of cardiac myocytes; 
+  S. Kumar, D. Wilding, M. Sikkel, A. Lyon, K. MacLeod and C. Dunsby; 
+  Optics Express, vol 19(15), p13839-13847, (2011)">
+  OPM, Kumar 2011</a></td>				<td>Coverslip</td><td>9.76%</td>					<td>17.99%</td>					</tr>
+  <tr><td><a class="citation" href="https://doi.org/10.1038/s41592-019-0401-3" 
+  title="Epi-illumination SPIM for volumetric imaging with high 
+  spatial-temporal resolution; B. Yang, X. Chen, Y. Wang, S. Feng, V. Pessino,
+  N. Stuurman, N.H. Cho, K.W. Cheng, S.J. Lord, L. Xu, D. Xie, R. D. Mullins, 
+  M.D. Leonetti and B. Huang; Nature Methods Express, vol 16, p501–504, (2019)">
+  eSPIM, Yang 2019</a></td>				<td>Coverslip</td><td>24.75%</td>					<td>45.63%</td>					</tr>
+  <tr><td><a href="https://www.zeiss.com/microscopy/en/products/light-microscopes/light-sheet-microscopes/lattice-lightsheet-7.html">
+  Lattice Zeiss</a></td>				<td>Coverslip</td><td>27.34%</td>					<td>50.41%</td>					</tr>
+  <tr><td><a class="citation" href="https://doi.org/10.5281/zenodo.3376243" 
+  title="High NA single-objective light-sheet; 
+  A. Millett-Sikking, K.M. Dean, R. Fiolka, A. Fardad, L. Whitehead and A.G. York;
+  (2019)">
+  SOLS, Millett-Sikking 2019</a></td>	<td>Coverslip</td><td>28.87%</td>					<td>53.23%</td>					</tr>  
+  <tr><td>SOLS re-optimised</td>		<td>Coverslip</td><td>36.39%</td>					<td>67.10%</td>					</tr>
+</table>
+
+	<h2>Calculation</h2>
+	<p>
+	The analysis is limited to microscopes that respect a <em>planar boundary</em>
+	for compatibility with standard slides, dishes and multiwell plates (i.e. no 
+	additional optics above the coverslip, or below the front face of the objective for 
+	dipping systems). In this regime the maximum available light from a spherical 
+	emitter is a <em>hemisphere</em> of rays. The estimate for transmission can then
+	be split into:
+	</p>
+	
+	<ol>
+	<li><strong>Ray transmission</strong>: what fraction of the hemisphere of rays are
+	transmitted by the system \(T_{rays}\).</li>
+	<li><strong>Optic transmission</strong>: what fraction of the rays are transmitted
+	after optical losses (for example by reflection and absorption) \(T_{optics}\).</li>
+	</ol>
+	
+	<p>
+	The total transmission of the system \(T\) is then the product of the ray and optic 
+	transmissions:
+	
+	\[ T = T_{rays} \; T_{optics} \tag{1}\]
+	</p>
+	
+	<h3>Ray transmission</h3>
+	<p>
+	Ideally behavior is assumed from the objectives. The combined ray transmission is
+	found with:
+	
+	\[ T_{rays} =  T_1 \; T_2 \; T_3 \tag{2}\]
+	</p>
+	
+	<h4>Objective 1</h4>
+	<p>
+	If we have a primary objective with a collection half angle \(\theta_1\), then 
+	the fraction of rays we can transmit from a hemisphere \(T_1\) is:
+	
+	\[ T_1 = 1 - \cos\theta_1 \tag{3}\]
+	
+	where,
+	
+	\[ \theta_1 = \arcsin{\left ( \frac{NA_1}{n_1} \right )} \tag{4}\]
+	
+	and \(NA_1\) and \(n_1\) are the numerical aperture and refractive index of the
+	immersion of objective 1. Equation (3) is found by taking the ratio of the area 
+	of a <em>spherical cap</em> to that of a hemisphere:
+	</p>
+
+	<figure>
+    <img src="figures/SOLS_transmission_objective_1.png" alt="SOLS_transmission_objective_1.png">
+    <figcaption>
+	(<a href="figures/SOLS_transmission_sketches.odp">.odp sketch</a>)
+	</figcaption>
+	</figure>
+
+	<h4>Objective 2</h4>
+	<p>
+	We will impose the 'perfect 3D imaging' condition from the original remote 
+	refocus paper 
+	(<a class="citation" href="https://doi.org/10.1016/j.optcom.2007.10.007" 
+	title="An optical technique for remote focusing in microscopy; 
+	E.J. Botcherby, R. Juškaitis, M.J. Booth and T. Wilson; 
+	Optics Communications, vol 281(4), p880-887, (2007)">Botcherby 2007</a>) and 
+	apply the <em>preservation of angles</em> between the object and the remote 
+	space (i.e. \(\theta_{1ray} = \theta_{2ray}\)). In this regime if \(\theta_2\) 
+	is the collection half angle of objective 2 then we have two possible results
+	for the transmission \(T_2\):
+	</p>
+	<ol>
+	<li>If \(\theta_2 \geq \theta_1\) then all the rays are transmitted:
+	
+	\[T_2 = 1 \tag{5}\]</li>
+	
+	<li>If \(\theta_2 \lt \theta_1\) then we must take the ratio of the fraction
+	of light that objective 2 can transmit compared to objective 1 (i.e. a ratio
+	of spherical caps): 
+	
+	\[T_2 = \frac{1 - \cos\theta_2}{1 - \cos\theta_1} \tag{6}\]</li>
+
+	</ol>
+
+	<figure>
+    <img src="figures/SOLS_transmission_objective_2.png" alt="SOLS_transmission_objective_2.png">
+    <figcaption>
+	(<a href="figures/SOLS_transmission_sketches.odp">.odp sketch</a>)
+	</figcaption>
+	</figure>
+
+	<h4>Objective 3</h4>
+	<p>
+	In contrast to a 'straight through' remote refocus, in a SOLS style microscope
+	(<a class="citation" href="https://doi.org/10.5281/zenodo.3376243" 
+	title="High NA single-objective light-sheet; 
+	A. Millett-Sikking, K.M. Dean, R. Fiolka, A. Fardad, L. Whitehead and A.G. York;
+	(2019)">Millett-Sikking 2019</a>) objective 3 (with collection half angle 
+	 \(\theta_3\)) is tilted away from the primary optic axis by an angle \(\theta_t\).
+	 The tilting can be thought of as tilting the spherical transmission
+	 cap of objective 3 away from the spherical transmission cap of objective 2, which 
+	 gives rise to four possible conditions:
+	</p>
+	<ol>
+	<li>If \(\theta_t \geq \theta_2 + \theta_3\) then the spherical cap of objective
+	3 is completely <em>outside</em> the spherical cap of objective 2 and no rays 
+	are transmitted:
+	
+	\[T_3 = 0 \tag{7}\]</li>
+	
+	<li>If \(\theta_t + \theta_2 \leq \theta_3\) then the spherical cap of objective
+	2 is completely <em>inside</em> the spherical cap of objective 3, and all the rays
+	are transmitted:
+	
+	\[T_3 = 1 \tag{8}\]</li>
+	
+	<li>If \(\theta_t + \theta_3 \leq \theta_2\) then the spherical cap of objective
+	3 is completely <em>inside</em> the spherical cap of objective 2, and (like equation
+	(6)) we must take the ratio of the ratio of spherical caps:
+	
+	\[T_3 = \frac{1 - \cos\theta_3}{1 - \cos\theta_2} \tag{9}\]</li>
+	
+	<li>For any other combination of \(\theta_2\), \(\theta_3\) and \(\theta_t\) the 
+	fraction of transmitted rays is given by the ratio of the <em>intersection of the 
+	spherical caps</em> with the spherical cap of objective 2:
+	
+	\[T_3 = \frac{(\pi - A\cos b - B \cos a - C)}{\pi (1 - \cos a)} \tag{10}\]
+	
+	<a href="./spherical_cap_intersection.html">See here</a>
+	for the origin of equation (10) and how to covert \(A\), \(B\), \(C\), 
+	\(a\) and \(b\) back to the variables \(\theta_2\), \(\theta_3\) and \(\theta_t\).
+	</li>
+	</ol>
+
+	<figure>
+    <img src="figures/SOLS_transmission_objective_3.png" alt="SOLS_transmission_objective_3.png">
+    <figcaption>
+	(<a href="figures/SOLS_transmission_sketches.odp">.odp sketch</a>)
+	</figcaption>
+	</figure>
+
+	<h3>Optic transmission</h3>
+	<p>
+	The combined optic transmission is simply found with:
+	
+	\[ T_{optics} = (T_{ob} \; T_{tl})^{n_{ob}} \; T_{sl}^{n_{sl}} \;
+	T_{mi}^{n_{mi}} \; T_{di}^{n_{di}} \; T_{fi}^{n_{fi}} \tag{11}\]
+	
+	where \(T_{ob}\), \(T_{tl}\), \(T_{sl}\), \(T_{mi}\), \(T_{di}\) and \(T_{fi}\)
+	are the nominal transmission efficiencies for objectives (87.5%), tube lenses 
+	(97.5%), scan lenses (90%), mirrors (99%), dichroics (95%) and filters (95%) 
+	respectively, and the exponents are the number of each element in the emission 
+	path (for example \(n_{mi} = 3\) would be 3 mirrors). The numbers in brackets are 
+	the typical transmission values at ~532nm that were used in the provided script 
+	(<a href="SOLS_transmission.py">SOLS_transmission.py</a>).
+	</p>
+
+	<h2>Benchmark</h2>
+	<p>
+	With a 'planar boundary' constraint the ideal microscope would collect hemispheric rays
+	at 100% efficiency. In practice a standard epifluorescence microscope has minimal 
+	emission path optics (i.e. maximum transmission) which provides a sensible 'benchmark'
+	for comparison:
+	</p>
+	
+	<figure>
+    <img src="figures/SOLS_transmission_benchmark.png" alt="SOLS_transmission_benchmark.png">
+    <figcaption>
+	(<a href="figures/SOLS_transmission_sketches.odp">.odp sketch</a>)
+	</figcaption>
+	</figure>
+	
+	<p>
+	Here the <em>Nikon 100x1.35 Silicone</em> oil objective, together with a single 
+	tube lens, dichroic and emission filter was used to represent the 'best in class' 
+	microscope. The 100x1.35 Sil has one of the highest angular collections currently 
+	available and is optimally refractive index matched for in vivo 3D imaging.
+	</p>
+
+</section>
+</body>
+</html>
